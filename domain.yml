@@ -1,0 +1,68 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ICU_Vacant_beds
+  - Non_ICU_Vacant_beds
+
+responses:
+  
+  utter_greet:
+  - text: "Are you looking for vacant beds?"
+    buttons:
+      - payload: "/affirm"
+        title: "YES"
+      - payload: "/deny"
+        title: "NO"
+
+  utter_beds_type:
+  - text: "What are you looking for?"
+    buttons:
+      - payload: "/ICU_Vacant_beds"
+        title: "ICU Vacant Beds"
+      - payload: "/Non_ICU_Vacant_beds"
+        title: "Non ICU Vacant Beds"
+
+  utter_sure:
+  - text: "Sure, let me check..."
+
+
+  utter_goodbye:
+  - text: "Thanks for the visit. \nWear mask, wash your hands regularly and keep 3m distance from each other. \nStay Home, Stay safe.\n"
+
+  
+  utter_also_check:
+    - text: "Also check this link for area wise requirements: [COVID ARMY](https://covid.army/)"
+
+actions:
+  - action_check_icu_vacant_beds
+  - action_check_non_icu_vacant_beds
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  # utter_goodbye:
+  # - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
